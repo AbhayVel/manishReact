@@ -182,7 +182,7 @@ export const StudentAttendance = () => {
                                 return a[columnName].indexOf(value) > -1;
                             }
                             else if(columnType === "ci"){
-                                debugger
+                                
                                 return a[columnName]?.toLowerCase()?.indexOf(value.toLowerCase()) > -1;
                             }
                             else if(columnType === "num"){

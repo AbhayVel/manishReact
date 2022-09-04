@@ -124,7 +124,7 @@ class BasePage extends Component<any> {
             }
 
     logout=()=> {
-        debugger;
+        ;
         if (this.props && this.props?.pLogout) {
             this.props?.pLogout({ type: 'logout' });
         }

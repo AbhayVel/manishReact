@@ -69,7 +69,7 @@ export const filterCommon=(fullData: any, headers: any)=>{
 
   export const gridCommon =(fullData: any, headers: any,columnName: string,columnType: string,sortOrder: number, pageConfig: any)=>{
 
-    debugger;
+    ;
     let rows: any=filterCommon(fullData,headers);
     rows=sortCommon(rows,columnName,columnType,sortOrder);
     const rowPerPage: number=pageConfig?.rowPerPage;

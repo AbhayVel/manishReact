@@ -25,7 +25,7 @@ export const Accordian = () => {
         }
     ])
     const isCollpsBtn = (e : any) =>{
-        debugger
+        
         accData.forEach(element => {
             if (element === e ){
                 // e.isOpen = !e.isOpen
