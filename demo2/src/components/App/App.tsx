@@ -6,6 +6,9 @@ import { Layout } from '../Layout/Layout';
 import { Routes } from '../Routes/Routes';
 import "../../assets/scss/bootstrap.scss";
 import "../../assets/scss/styles.scss";
+/*
+ * Store Added in this File
+ */
 
 export const App = (): JSX.Element => (
   <Provider store={store}>
