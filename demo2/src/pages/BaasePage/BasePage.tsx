@@ -1,10 +1,22 @@
 import React, { Children } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 
-
+/*
+ * Added dispatch method
+ */
 export const BasePage = (props : any) => {
+    const isLogin: any = useSelector((state: any) => state)
+    const dispatch: any = useDispatch();
+    const { children } = props;
 
-    const { children} =props;
+    const login = () => {
+        dispatch({ type: 'login', payload: { userName: "abhay", role: "admin" } });
+    }
+    const logout = () => {
+        dispatch({ type: 'logout' });
+    }
+
 
     return (
     <div className="container-xxl position-relative bg-white d-flex p-0">
@@ -12,10 +24,14 @@ export const BasePage = (props : any) => {
             <nav className="navbar bg-light navbar-light">
                 <a href="index.html" className="navbar-brand mx-4 mb-3">
                     <h3 className="text-primary"><i className="fa fa-hashtag me-2" />DASHMIN</h3>
-                </a>
+                    </a>
+
                 <div className="navbar-nav w-100">
                     <a href="index.html" className="nav-item nav-link active">
-                        <i className="fa fa-tachometer-alt me-2" />Dashboard</a>
+                            <i className="fa fa-tachometer-alt me-2" />Dashboard</a>
+                        <button type="button" onClick={login}>Login </button>
+                        <br />
+                        <button type="button" onClick={logout}>logout </button>
                     <div className="nav-item dropdown">
                         <a href="index.html" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <i className="fa fa-laptop me-2" />Elements</a>
