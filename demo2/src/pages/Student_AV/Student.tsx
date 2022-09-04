@@ -45,7 +45,7 @@ export const PopUp=(props: any)=>{
  
 
 export const Student = () => {
-
+    //subscribe the state.
     const isLogin: any = useSelector((state: any) => state)
     debugger;
     const [currentUser, setCurrentUser]= useState({id: 1})
@@ -207,7 +207,7 @@ export const Student = () => {
 
     ])
 
-   const [isOpenPopUp,setIsOpenPopUp]=useState(true); 
+   const [isOpenPopUp,setIsOpenPopUp]=useState(false); 
 
     const [studentData, setStudentData] = useState([...fullData])
     const [sortOrder, setSortOrder] = useState(-1);

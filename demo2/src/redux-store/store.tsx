@@ -1,4 +1,7 @@
 import { createStore } from '@reduxjs/toolkit'
+/*
+ * Store created in this file.
+ */
 
 const initialValue = {
 	isLogin: false,
