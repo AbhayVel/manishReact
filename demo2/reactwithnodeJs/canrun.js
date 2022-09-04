@@ -1,17 +1,23 @@
 const redux = require('redux');
 const initialValue = {
-	data:0
+	isLogin: false,
+	userName: "",
+	role: ""
 }
-const myReducer = (state = initialValue,action) => {
+const myReducer = (state = initialValue, action) => {
 
-	if (action.type == 'add') {
+	if (action.type == 'login') {
 		return {
-			data: state.data + 1
+			isLogin: true,
+			userName: action.payload.userName,
+			role: action.payload.role
 		}
 	}
-	if (action.type == 'minus') {
+	if (action.type == 'logout') {
 		return {
-			data: state.data - 1
+			isLogin: false,
+			userName: "",
+			role: ""
 		}
 	}
 	return state;
@@ -25,10 +31,6 @@ const actionSubscriber = () => {
 
 store.subscribe(actionSubscriber);
 
-store.dispatch({ type: 'add' });
-store.dispatch({ type: 'add' });
-store.dispatch({ type: 'minus' });
-store.dispatch({ type: 'add' });
-store.dispatch({ type: 'add' });
-store.dispatch({ type: 'minus' });
-store.dispatch({ type: 'add' });
+store.dispatch({ type: 'login', payload: { userName: "abhay", role: "admin" } });
+store.dispatch({ type: 'logout' });
+store.dispatch({ type: 'login', payload: { userName: "xx", role: "admin" } });
