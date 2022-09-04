@@ -45,7 +45,7 @@ export const PopUp=(props: any)=>{
  
 
 export const Student = () => {
-    //subscribe the state.
+ 
     const isLogin: any = useSelector((state: any) => state)
     debugger;
     const [currentUser, setCurrentUser]= useState({id: 1})

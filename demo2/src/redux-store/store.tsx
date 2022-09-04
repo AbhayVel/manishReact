@@ -9,7 +9,7 @@ const initialValue = {
 	role: ""
 }
 // @typescript-eslint/default-param-last
-const myReducer = (state: any = initialValue, action: any) => {
+const myReducer = (state = initialValue, action: any) => {
 	if (action.type === 'login') {
 		return {
 			isLogin: true,

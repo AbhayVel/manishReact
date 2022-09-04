@@ -50,7 +50,22 @@ module.exports = {
 'react-hooks/exhaustive-deps':'off',
 'eslint-disable-next-line jsx-a11y/label-has-associated-control':'off',
       'jsx-a11y/label-has-associated-control': 'off',
-'@typescript-eslint/default-param-last': 'off',
+      '@typescript-eslint/default-param-last': 'off',
+      '@typescript-eslint/lines-between-class-members': 'off',
+      'react/destructuring-assignment': 'off',
+      'class-methods-use-this': 'off',
+      '@typescript-eslint/no-useless-constructor': 'off',
+ 
+      'react/no-unused-prop-types': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+      "react/require-default-props": [
+          "error",
+          {
+              "forbidDefaultForRequired": true,
+              "functions": "defaultArguments" //Here
+          }
+      ] ,
+      
     'no-param-reassign': [
       'error',
       // Immer - https://github.com/immerjs/immer/issues/189#issuecomment-703083451
