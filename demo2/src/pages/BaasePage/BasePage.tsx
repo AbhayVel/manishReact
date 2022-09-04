@@ -1,5 +1,6 @@
 import React, { Children, Component, ReactNode } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
+import { authActions } from '../../redux-store/store';
 
 
 /*
@@ -10,9 +11,11 @@ export const BasePageFun = (props : any) => {
     const { children } = props;
 
     const login = () => {
+        debugger;
         dispatch({ type: 'login', payload: { userName: "abhay", role: "admin" } });
     }
     const logout = () => {
+        debugger;
         dispatch({ type: 'logout' });
     }
 
@@ -117,16 +120,17 @@ class BasePage extends Component<any> {
     }
 
     login = () => {
+        debugger;
         if (this.props && this.props?.pLogin) {
-            this.props?.pLogin({ type: 'login', payload: { userName: "abhay", role: "admin" } });
+            this.props?.pLogin({  userName: "abhay", role: "admin"  });
 
 		}
             }
 
     logout=()=> {
-        ;
+        debugger;
         if (this.props && this.props?.pLogout) {
-            this.props?.pLogout({ type: 'logout' });
+            this.props?.pLogout({ });
         }
      }
      render() {
@@ -224,10 +228,10 @@ const mapProps = (state: any) => {
 const mapDispatchProps = (dispatch: any) => {
     return {
         pLogin: (obj: any) => {
-            dispatch(obj);
+            dispatch(authActions.login(obj));
 		},
         pLogout: (obj: any) => {
-            dispatch(obj);
+            dispatch(authActions.logout(obj));
         }
     }
 }

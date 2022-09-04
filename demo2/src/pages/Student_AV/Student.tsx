@@ -46,7 +46,7 @@ export const PopUp=(props: any)=>{
 
 export const Student = () => {
  
-    const isLogin: any = useSelector((state: any) => state)
+    const isLogin: any = useSelector((state: any) => state.auth)
     ;
     const [currentUser, setCurrentUser]= useState({id: 1})
     const [pageConfig,setPageConfig]=useState({
