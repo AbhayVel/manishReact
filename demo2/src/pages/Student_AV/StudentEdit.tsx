@@ -95,7 +95,7 @@ const handelChange=(key: any,value: any,eve: any)=>{
 
 useEffect(()=>{
     setCurrentValue(columnvalue);
-    debugger;
+    ;
     setFormData.current ={
         ...setFormData.current,[columnKey]:{
          isValid,
@@ -148,7 +148,7 @@ const checkValidate=()=>{
 const FormComponent=(columnKey: any,data: any,value: any, isValid: any, validateComponent: any)=>{
     console.log(refData);
     setComponent({...formComponent, [columnKey]: { validateComponent, isValid } })
-    debugger;
+    ;
 }
 
 

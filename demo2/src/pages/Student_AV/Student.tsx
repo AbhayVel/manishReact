@@ -45,9 +45,9 @@ export const PopUp=(props: any)=>{
  
 
 export const Student = () => {
-    //subscribe the state.
-    const isLogin: any = useSelector((state: any) => state)
-    debugger;
+ 
+    const isLogin: any = useSelector((state: any) => state.auth)
+    ;
     const [currentUser, setCurrentUser]= useState({id: 1})
     const [pageConfig,setPageConfig]=useState({
         pages: [
@@ -256,7 +256,7 @@ export const Student = () => {
     }
 
     const openPopUp=(data: any)=>{
-        debugger;
+        ;
         setCurrentUser({...data.data});
         setIsOpenPopUp(true);
     }
@@ -265,7 +265,7 @@ export const Student = () => {
     }
 
     const onDataChange=(data: any)=>{
-        debugger;
+        ;
         setCurrentUser({...data});
 
 

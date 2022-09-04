@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react';
 import { lazyComponent } from '../../common/utils';
-import { BasePage } from '../../pages/BaasePage/BasePage';
+import  BasePage  from '../../pages/BaasePage/BasePage';
 import { ErrorBoundarySuspense } from '../ErrorBoundarySuspense/ErrorBoundarySuspense';
 
 const Footer = lazyComponent('Footer', import('../Footer/Footer'));

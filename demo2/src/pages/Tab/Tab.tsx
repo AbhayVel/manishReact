@@ -5,7 +5,7 @@ export const Tabs = (props: any) => {
    const {tabData, currentIndex, children }=props;
     const [currentIndexTab,setCurrentIndexTab]=useState(currentIndex);
    
-    debugger;
+    ;
     const [tabsData, setTabsData] = useState(tabData)  
 
     const tabOpen = (data:any) =>{
