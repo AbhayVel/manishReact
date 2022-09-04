@@ -49,7 +49,8 @@ module.exports = {
     'no-nested-ternary':'off',
 'react-hooks/exhaustive-deps':'off',
 'eslint-disable-next-line jsx-a11y/label-has-associated-control':'off',
-'jsx-a11y/label-has-associated-control':'off',
+      'jsx-a11y/label-has-associated-control': 'off',
+'@typescript-eslint/default-param-last': 'off',
     'no-param-reassign': [
       'error',
       // Immer - https://github.com/immerjs/immer/issues/189#issuecomment-703083451

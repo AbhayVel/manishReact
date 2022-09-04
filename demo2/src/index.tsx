@@ -1,21 +1,28 @@
 import { enableAllPlugins } from 'immer';
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
 import './assets/scss/index.scss';
 import { App } from './components/App/App';
 import { ErrorBoundary } from './components/ErrorBoundary/ErrorBoundary';
+import store from './redux-store/store';
 import reportWebVitals from './reportWebVitals';
+
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+
+
 
 enableAllPlugins();
 
 const root = createRoot(document.getElementById('root') as HTMLElement);
 root.render(
+    <Provider  store={store}   >
   <StrictMode>
     <ErrorBoundary>
       <App />
     </ErrorBoundary>
-  </StrictMode>
+        </StrictMode>
+  </Provider>
 );
 
 // If you want your app to work offline and load faster, you can change unregister() to register()

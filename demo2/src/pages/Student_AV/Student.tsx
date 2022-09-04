@@ -1,12 +1,13 @@
-import React, { useState , useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { TRTDContext } from '../../common/TRRow';
 import { TableGrid } from '../../common/TableGrid';
-
 import { filterCommon, convertDate, sortCommon, gridCommon } from '../../common/utilities-functions';
 import { StudentAddEdit } from './StudentEdit';
 
-export const PopUp=(props: any)=>{
 
+export const PopUp=(props: any)=>{
+   
     const {closePopUpEvent, children, header, isShowCloseButton, isFooter}=props;
 
     const closeMe=()=>{
@@ -21,7 +22,8 @@ export const PopUp=(props: any)=>{
               <button type="button" className="close"  onClick={()=>{closeMe()}} data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
-            </div>
+                    </div>
+
             <div className="modal-body">
               {children}
             </div>
@@ -44,7 +46,8 @@ export const PopUp=(props: any)=>{
 
 export const Student = () => {
 
-
+    const isLogin: any = useSelector((state: any) => state)
+    debugger;
     const [currentUser, setCurrentUser]= useState({id: 1})
     const [pageConfig,setPageConfig]=useState({
         pages: [
@@ -279,7 +282,7 @@ export const Student = () => {
                 <div>
 
                     {
-                        JSON.stringify(currentUser)
+                      JSON.stringify(isLogin)
                     }
                     <span >Id</span><input type="text" />
                     <span >Name</span><input type="text" />
