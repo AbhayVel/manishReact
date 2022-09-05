@@ -1,6 +1,9 @@
 import React, { Children, Component, ReactNode } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom'
+
 import { authActions } from '../../redux-store/store';
+
 
 
 /*
@@ -12,11 +15,20 @@ export const BasePageFun = (props : any) => {
 
     const login = () => {
         debugger;
-        dispatch({ type: 'login', payload: { userName: "abhay", role: "admin" } });
+        /*
+         * dispatch({ type: 'login', payload: { userName: "abhay", role: "admin" } });
+         */
+        dispatch(authActions.login({ userName: "abhay", role: "admin" }))
     }
+    const RedirectToStudent = () => {
+        Navigate({ to: "/student?data=23&er=5"});
+	}
     const logout = () => {
         debugger;
-        dispatch({ type: 'logout' });
+       /* 
+        * dispatch({ type: 'logout' });
+        * */
+        dispatch(authActions.logout({ userName: "", role: "" }))
     }
 
 
@@ -31,6 +43,8 @@ export const BasePageFun = (props : any) => {
                 <div className="navbar-nav w-100">
                     <a href="index.html" className="nav-item nav-link active">
                             <i className="fa fa-tachometer-alt me-2" />Dashboard</a>
+                        <button type="button" onClick={RedirectToStudent}>Student </button>
+                        <br />
                         <button type="button" onClick={login}>Login </button>
                         <br />
                         <button type="button" onClick={logout}>logout </button>
@@ -119,6 +133,10 @@ class BasePage extends Component<any> {
          super(props);           
     }
 
+    componentDidMount() {
+        debugger;
+
+	}
     login = () => {
         debugger;
         if (this.props && this.props?.pLogin) {
@@ -132,7 +150,14 @@ class BasePage extends Component<any> {
         if (this.props && this.props?.pLogout) {
             this.props?.pLogout({ });
         }
-     }
+    }
+    RedirectToStudent = () => {
+        debugger;
+
+        /*
+        Navigate.p({ to: "/student?data=23&er=5" });
+        */
+    }
      render() {
          return (
              <div className="container-xxl position-relative bg-white d-flex p-0">
@@ -145,6 +170,8 @@ class BasePage extends Component<any> {
                          <div className="navbar-nav w-100">
                              <a href="index.html" className="nav-item nav-link active">
                                  <i className="fa fa-tachometer-alt me-2" />Dashboard</a>
+                             <button type="button" onClick={this.RedirectToStudent}>Student </button>
+                             <br />
                              <button type="button" onClick={this.login}>Login </button>
                              <br />
                              <button type="button" onClick={this.logout}>logout </button>

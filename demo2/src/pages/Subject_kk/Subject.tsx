@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 
 
 
 export const Subject = () => {
 
+    const navigate = useNavigate()
+    const params = useParams();
+    const location = useLocation();
+    const [queryString] = useSearchParams();
     const [headers,setHeader] = useState([
         {
             displayName:"Sub_Code",
@@ -42,6 +47,11 @@ const [subData,setSubData]=useState([
     }
 ])
 
+    useEffect(() => {
+        const data = params?.id;
+        console.log(queryString.get('data'));
+        debugger;
+    }, [])
 const[sortOrder,setSortOrder] = useState(1);
 
 const sortData = (e : any) =>{
@@ -138,7 +148,8 @@ const sortData = (e : any) =>{
                         <h6 className="mb-0">Recent Salse</h6>
                         <a href="index.html">Show All</a>
                     </div>
-                    <div className="table-responsive">
+                        <div className="table-responsive">
+                            <button type="button" onClick={() => {navigate("/student?data=re&test=uu") } }   >SHow</button>
                         <table className="table text-start align-middle table-bordered table-hover mb-0">
                                 <thead>
                                 <tr className='text-dark'>
