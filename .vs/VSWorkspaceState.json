@@ -4,11 +4,10 @@
     "\\demo2",
     "\\demo2\\reactwithnodeJs",
     "\\demo2\\src",
-    "\\demo2\\src\\components\\App",
+    "\\demo2\\src\\components\\ErrorBoundary",
     "\\demo2\\src\\pages",
     "\\demo2\\src\\pages\\BaasePage",
-    "\\demo2\\src\\pages\\Student_AV",
-    "\\demo2\\src\\redux-store"
+    "\\demo2\\src\\pages\\Student_AV"
   ],
   "SelectedNode": "\\demo2\\src\\pages\\Student_AV\\Student.tsx",
   "PreviewInSolutionExplorer": false

@@ -12,6 +12,7 @@ import { StudentAttendance } from '../../pages/Student_attendance_SB/Student_att
 
 
 
+
 const Tab = lazyComponent('Tab', import('../../pages/Tab/Tab'));
 const Accordian = lazyComponent('Accordian', import('../../pages/Accordian/Accordian'));
 const Subject = lazyComponent('Subject', import('../../pages/Subject_kk/Subject'));
@@ -22,13 +23,16 @@ const PageNotFound = lazyComponent('PageNotFound', import('../../pages/PageNotFo
 const Card = lazyComponent('Card', import('../../pages/Card/Cards'));
 const TreeStrcture = lazyComponent('TreeStrcture', import('../../pages/Tree-Strcture/Tree-Strcture'));
 export const Routes = (): JSX.Element => (
-  <RoutesRRD>
-    <Route element={<Student />} path="/" />
+    <RoutesRRD>
+       
+       
+        <Route element={<Student />} path="/" />
+        <Route element={<Student />} path="/student" />
     <Route element={<Home />} path="/home" />
     <Route element={<PageNotFound />} path="*" />
     <Route element={<Teachers/>} path="/teachers" />
-    <Route element={<Subject/>} path="/Subject" />
-
+    <Route element={<Subject/>} path="/Subject"/>
+    <Route element={<Subject />} path="/Subject/:id" />
    
     <Route element={<StudentAttendance />} path="/StudentAttendance" />
     <Route element={<Accordian />} path="/Accordian" />
@@ -39,7 +43,7 @@ export const Routes = (): JSX.Element => (
     
 
     <Route element={<Subject />} path="/subject" />
-
+       
   </RoutesRRD>
 );
 

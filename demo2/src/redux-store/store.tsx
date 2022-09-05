@@ -1,4 +1,4 @@
-import { createStore, createSlice, configureStore } from '@reduxjs/toolkit'
+import { createSlice, configureStore } from '@reduxjs/toolkit'
 
 const initialValue = {
 	isLogin: false,
