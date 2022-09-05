@@ -4,10 +4,7 @@
     "\\public",
     "\\src",
     "\\src\\assets",
-    "\\src\\assets\\scss",
-    "\\src\\components\\Routes",
-    "\\src\\pages\\Student_AV",
-    "\\src\\pages\\Subject_kk"
+    "\\src\\assets\\scss"
   ],
   "PreviewInSolutionExplorer": false
 }
