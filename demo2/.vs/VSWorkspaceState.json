@@ -3,8 +3,10 @@
     "",
     "\\public",
     "\\src",
-    "\\src\\assets",
-    "\\src\\assets\\scss"
+    "\\src\\components",
+    "\\src\\components\\App",
+    "\\src\\components\\Routes"
   ],
+  "SelectedNode": "\\reactwithnodeJs",
   "PreviewInSolutionExplorer": false
 }
