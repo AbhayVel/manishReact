@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { Link, NavLink } from 'react-router-dom';
+import { Observable, Observer } from 'rxjs';
 import { TRTDContext } from '../../common/TRRow';
 import { TableGrid } from '../../common/TableGrid';
 import { filterCommon, convertDate, sortCommon, gridCommon } from '../../common/utilities-functions';
+import { useTitle } from '../../util/useTitle';
 import { StudentAddEdit } from './StudentEdit';
+
+
 
 
 export const PopUp=(props: any)=>{
@@ -42,10 +47,14 @@ export const PopUp=(props: any)=>{
 
     )
 }
- 
+
+
+
 
 export const Student = () => {
- 
+    useTitle("student component");
+
+
     const isLogin: any = useSelector((state: any) => state.auth)
     ;
     const [currentUser, setCurrentUser]= useState({id: 1})
@@ -223,15 +232,24 @@ export const Student = () => {
         setStudentData(d);
         setHeader([...headers])
         setPageConfig({...pageConfig});
+    }
+
+    const getData = (): Observable<any> => {
+        return new Observable<any>((o: Observer<any>) => {
+            o.next(fullData);
+		})
 	}
 
-    useEffect(()=>{
-        const rows=   gridCommon(fullData,headers,columnName,columnType,sortOrder,pageConfig);
-        const d = [...rows]
-        setStudentData(d);
-        setHeader([...headers])
-        setPageConfig({...pageConfig});
-
+    useEffect(() => {
+        const get = async () => {
+            const data = await getData().toPromise();
+            const rows = gridCommon(data, headers, columnName, columnType, sortOrder, pageConfig);
+            const d = [...rows]
+            setStudentData(d);
+            setHeader([...headers])
+            setPageConfig({ ...pageConfig });
+		}
+        get();
     },[])
     const filterData = (header: any, searchData: any, val: any) => {
         searchData.value = val;
@@ -279,6 +297,7 @@ export const Student = () => {
                 <a href="index.html">Show All</a>
                 </div>
 
+              
                 <div>
 
                     {
@@ -290,21 +309,26 @@ export const Student = () => {
                     <button type="button" >Search</button>
                 </div>
 
+                <Link to="/student" > Link </Link>
+                
+                <NavLink to="/student" className={({ isActive }) => isActive ? 'active' : 'non-active'} >
+                    NavLink
+                </NavLink>
             {isOpenPopUp && <PopUp header="User Edit" closePopUpEvent={closePopUp}><StudentAddEdit currentUser={currentUser}  onDataChange={onDataChange} /></PopUp>}    
-           <TableGrid headers={headers} filterData={filterData} sortData={sortData} tableData={studentData} >
-                   <input className="form-check-input" type="checkbox" />
-                   <TRTDContext.Consumer>
-               {
-                (value: any)=>{
-                return (    <div>
-                    <a className="btn btn-sm btn-primary" onClick={(eve)=>{ openPopUp(value); eve.preventDefault();  }} href="index.html">Edit</a>
-                    <a className="btn btn-sm btn-danger" href="index.html">Delete</a>     
-                   </div>
-                )
-                }
-               }
-            </TRTDContext.Consumer>
-            </TableGrid>
+				<TableGrid headers={headers} filterData={filterData} sortData={sortData} tableData={studentData} >
+					<input className="form-check-input" type="checkbox" />
+					<TRTDContext.Consumer>
+						{
+							(value: any) => {
+								return (<div>
+									<a className="btn btn-sm btn-primary" onClick={(eve) => { openPopUp(value); eve.preventDefault(); }} href="index.html">Edit</a>
+									<a className="btn btn-sm btn-danger" href="index.html">Delete</a>
+								</div>
+								)
+							}
+						}
+					</TRTDContext.Consumer>
+				</TableGrid>
 
 
             <div className='mt-4'>

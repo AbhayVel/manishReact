@@ -8,10 +8,11 @@ function Parent(props: any) {
   return (
       <div>
           I am in Parent component
+        
           {children.props.children.map((e: any) => {
               debugger;
               return (
-                  <div>
+                  <div key={e.props.name}>
                       <div>{e.props.name}</div>
                       <div>{e}</div>
                   </div>
