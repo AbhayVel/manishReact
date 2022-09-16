@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import { Observable, Observer } from 'rxjs';
+import { ReactComponent as Logo } from '../../assets/images/icons/logo.svg';
+import  rImage  from '../../assets/images/icons/react.png';
 import { TRTDContext } from '../../common/TRRow';
 import { TableGrid } from '../../common/TableGrid';
 import { filterCommon, convertDate, sortCommon, gridCommon } from '../../common/utilities-functions';
 import { useTitle } from '../../util/useTitle';
 import { StudentAddEdit } from './StudentEdit';
+
 
 
 
@@ -288,7 +291,7 @@ export const Student = () => {
 
 
     }
-   
+    const name = "react";
     return (
     <div className="container-fluid pt-4 px-4">
         <div className="bg-light text-center rounded p-4">
@@ -308,7 +311,7 @@ export const Student = () => {
 
                     <button type="button" >Search</button>
                 </div>
-
+               
                 <Link to="/student" > Link </Link>
                 
                 <NavLink to="/student" className={({ isActive }) => isActive ? 'active' : 'non-active'} >
@@ -349,7 +352,9 @@ export const Student = () => {
     
     
     
-        </div>
+            </div>
+            <img key="abc" src={`./images/icons/${name}.png`} alt="I am react" />
+            <img key="def" src={rImage} alt="I am react" />
     </div>
     )
 }
