@@ -1,35 +1,54 @@
-import { enableAllPlugins } from 'immer';
-import React, { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import './assets/scss/index.scss';
-import { App } from './components/App/App';
-import { ErrorBoundary } from './components/ErrorBoundary/ErrorBoundary';
-import store from './redux-store/store';
-import reportWebVitals from './reportWebVitals';
+/*
+ * Main logic For Services start
+ */
+export const useServiceFactory = (function (Provider: any) {
+	const objectInstance: any = {
 
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+	};
+	const createObject = (ctor: any, args: any) => {
+		return new (ctor.bind.apply(ctor, [null].concat(args)))();
+	};
 
+	const useServices = (arg: any) => {
+		let props = arg;
+		const index = Provider.findIndex((e: any) => {
+			if (typeof props == 'string') {
+				return e.name === props;
+			}
+			return e.provide.name === props.name;
+		});
 
+		if (index === -1) {
+			throw "No Provider is provided";
+		}
 
-enableAllPlugins();
+		const provider = Provider[index];
+		props = provider.provide;
+		if (provider.useFactory) {
+			objectInstance[props.name] = provider.useFactory();
+		} else if (provider.useValue) {
+			objectInstance[props.name] = provider.useValue;
+		} else if (provider.useClass) {
+			objectInstance[props.name] = useServices(provider.useClass);
+		}
+		if (!objectInstance[props.name]) {
+			if (provider.dependency.length > 0) {
+				const argumentArray = [];
+				for (let i = 0; i < provider.dependency.length; i++) {
+					argumentArray.push(useServices(provider.dependency[i]));
+				}
+				objectInstance[props.name] = createObject(props, argumentArray);
+			} else {
+				objectInstance[props.name] = createObject(props, []);
+			}
+		}
 
-const root = createRoot(document.getElementById('root') as HTMLElement);
-root.render(
-    <Provider  store={store}   >
-  <StrictMode>
-    <ErrorBoundary>
-      <App />
-    </ErrorBoundary>
-        </StrictMode>
-  </Provider>
+		return objectInstance[props.name];
+	}
+
+	return useServices;
+}
 );
-
-// If you want your app to work offline and load faster, you can change unregister() to register()
-// below. Note this comes with some pitfalls. Learn more about service workers: https://cra.link/PWA
-serviceWorkerRegistration.unregister();
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+/*
+ * Main logic For Services	End
+ */
